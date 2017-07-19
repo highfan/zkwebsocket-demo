@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk>
+	<!-- [Optional]
+	Uncomment if you want to defines the application's name 
+	
+	<preference>
+		<name>org.zkoss.zk.ui.WebApp.name</name>
+		<value>zkwebsocketdemo</value>
+	</preference>
+	-->
+
+	<listener>
+		<listener-class>org.zkoss.zkmax.au.websocket.WebSocketWebAppInit</listener-class>
+	</listener>
+
+	<session-config>
+		<!-- Turn on the following if you want a different timeout -->
+		Note: The unit is seconds (while that of web.xml is minute)
+		<session-timeout>60</session-timeout>
+
+		<!-- Turn on the following if you want to reset the session-timeout
+		counter when receiving onTimer, like any other request
+		In other words, the session is never timeoout if the desktop has
+		a timer.
+		<timer-keep-alive>true</timer-keep-alive>
+		-->
+	</session-config>
+
+</zk>
