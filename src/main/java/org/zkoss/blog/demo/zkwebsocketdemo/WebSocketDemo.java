@@ -7,6 +7,7 @@ import org.zkoss.chart.Point;
 import org.zkoss.chart.Series;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zkmax.au.websocket.WebSocketServerPush;
 import org.zkoss.zul.Window;
 
 public class WebSocketDemo extends SelectorComposer<Window> {
@@ -16,6 +17,11 @@ public class WebSocketDemo extends SelectorComposer<Window> {
 
 	@Override
 	public void doAfterCompose(Window comp) throws Exception {
+		initializeChart(comp);
+		WebSocketDemoServerPush.start(chart);
+	}
+
+	private void initializeChart(Window comp) throws Exception {
 		super.doAfterCompose(comp);
 
 		Options options = new Options();
@@ -48,5 +54,4 @@ public class WebSocketDemo extends SelectorComposer<Window> {
 			series.addPoint(point);
 		}
 	}
-
 }

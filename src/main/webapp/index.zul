@@ -1,6 +1,3 @@
 <window apply="org.zkoss.blog.demo.zkwebsocketdemo.WebSocketDemo">
 	<charts id="chart" width="900" height="400" type="spline" title="WebSocket Demo (made with ZK Charts)"/>
-	<zscript>
-		org.zkoss.blog.demo.zkwebsocketdemo.WebSocketDemoServerPush.start(chart);
-	</zscript>
 </window>
