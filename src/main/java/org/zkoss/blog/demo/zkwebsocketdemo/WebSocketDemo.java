@@ -42,7 +42,7 @@ public class WebSocketDemo extends SelectorComposer<Window> {
 
 		Series series = chart.getSeries();
 		series.setName("Random data");
-		long l = Utils.getNow();
+		long l = System.currentTimeMillis();
 		for (int i = -19; i < 0; i++) {
 			Point point = new Point(l + i * 1000, Math.random());
 			series.addPoint(point);

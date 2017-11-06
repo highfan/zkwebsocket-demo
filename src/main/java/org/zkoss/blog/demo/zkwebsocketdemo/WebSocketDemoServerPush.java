@@ -9,6 +9,8 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Messagebox;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by wenninghsu on 14/06/2017.
  */
@@ -19,7 +21,6 @@ public class WebSocketDemoServerPush {
 		if (desktop.isServerPushEnabled()) {
 			Messagebox.show("Already started");
 		} else {
-			desktop.removeAttribute("sp.ceased");
 			desktop.enableServerPush(true);
 			new WorkingThread(chart).start();
 		}
@@ -36,11 +37,8 @@ public class WebSocketDemoServerPush {
 			_desktop = chart.getDesktop();
 		}
 		public void run() {
-			while (_desktop.getAttribute("sp.ceased") == null) {
-				if (!_desktop.isServerPushEnabled()) {
-					break;
-				}
-				final long l = Utils.getNow();
+			while (_desktop.isServerPushEnabled()) {
+				final long l = System.currentTimeMillis();
 				Executions.schedule(_desktop,
 						new EventListener() {
 							public void onEvent(Event event) {
